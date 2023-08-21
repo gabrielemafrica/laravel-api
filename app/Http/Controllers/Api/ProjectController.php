@@ -20,7 +20,8 @@ class ProjectController extends Controller
 
     public function projectIndex() {
         //ottenere tutti i progetti
-        $projects = Project::all();
+        // $projects = Project::all();
+        $projects = Project::with(['type']) -> paginate(3);
 
         //restituire i progetti in formato json
         return response() -> json([
