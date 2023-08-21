@@ -6,9 +6,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProjectController;
 
 Route :: prefix('/v1') -> group(function() {
+
+    // rotta di prova
     Route :: get ('/prova-api', [
         ProjectController::class,
         'provaApi'
+    ]);
+
+    // rotta per ottenere tutti i progetti
+    Route :: get ('/projects', [
+        ProjectController::class,
+        'projectIndex'
     ]);
 });
 
