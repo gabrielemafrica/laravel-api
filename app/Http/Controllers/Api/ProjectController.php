@@ -9,23 +9,30 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
-    //messaggio di prova
+    // Messaggio di prova
     public function provaApi() {
-        return response() -> json([
+        return response()->json([
             'message' => 'messaggio di prova'
         ]);
     }
 
-    //metodo per ottenere tutti i progetti
-
+    // Metodo per ottenere tutti i progetti
     public function projectIndex() {
-        //ottenere tutti i progetti
+        // Ottenere tutti i progetti
         // $projects = Project::all();
-        $projects = Project::with('type') -> paginate(3);
+        $projects = Project::with('type')->paginate(3);
 
-        //restituire i progetti in formato json
-        return response() -> json([
+        // Restituire i progetti in formato json
+        return response()->json([
             'projects' => $projects
+        ]);
+    }
+
+    // Mostra un progetto specifico
+    public function projectShow($id) {
+        $project = Project::with('type')->findOrFail($id);
+        return response()->json([
+            'project' => $project
         ]);
     }
 }

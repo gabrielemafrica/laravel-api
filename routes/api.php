@@ -18,6 +18,12 @@ Route :: prefix('/v1') -> group(function() {
         ProjectController::class,
         'projectIndex'
     ]);
+
+    // rotta per ottenere un progetto
+    Route :: get ('/projects/{id}', [
+        ProjectController::class,
+        'projectShow'
+    ]);
 });
 
 /*
